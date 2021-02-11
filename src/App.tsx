@@ -4,14 +4,20 @@ import Cloud from "./pages/pricing/components/CloudPricing";
 import Server from "./pages/pricing/components/ServerPricing";
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import { Grid, makeStyles } from "@material-ui/core";
-import { red } from "@material-ui/core/colors";
+import { Box, Grid, makeStyles } from "@material-ui/core";
+import { grey, red } from "@material-ui/core/colors";
 import { CloudCircle, StorageOutlined } from "@material-ui/icons";
 
 const useStyles = makeStyles({
   app: {
     marginTop: 32,
-    marginBottom: 16
+    marginBottom: 16,
+    backgroundColor: grey[100],
+    padding: 48,
+
+  },
+  grid: {
+    backgroundColor: '#fff',
   },
   tabIcon: {
     color: red[900]
@@ -35,25 +41,25 @@ function App() {
 
   return (
     <>
-      <section className={classes.app}>
-        <Grid container spacing={2}>
-          <Grid item xs></Grid>
-          <Grid item xs={10} sm={8}>
-            <h1>Pricing</h1>
-            <Tabs value={selectedTab} onChange={handleChange} aria-label="Pricing Tabs">
-              <Tab label="Cloud" {...a11yProps(0)} 
-              icon={<CloudCircle className={classes.tabIcon} />}
-              />
-              <Tab label="Server" {...a11yProps(1)}
-              icon={<StorageOutlined className={classes.tabIcon} />}
-               />
-            </Tabs>
-            {selectedTab === 0 && <Cloud />}
-            {selectedTab === 1 && <Server />}
-          </Grid>
-          <Grid item xs></Grid>
+      <Box className={classes.app}>
+        <Grid container spacing={10} >
+            <Grid item xs></Grid>
+            <Grid item xs={10} sm={8} className={classes.grid}>
+              <h1>Pricing</h1>
+              <Tabs value={selectedTab} onChange={handleChange} aria-label="Pricing Tabs">
+                <Tab label="Cloud" {...a11yProps(0)}
+                  icon={<CloudCircle className={classes.tabIcon} />}
+                />
+                <Tab label="Server" {...a11yProps(1)}
+                  icon={<StorageOutlined className={classes.tabIcon} />}
+                />
+              </Tabs>
+              {selectedTab === 0 && <Cloud />}
+              {selectedTab === 1 && <Server />}
+            </Grid>
+            <Grid item xs></Grid>
         </Grid>
-      </section>
+      </Box>
 
     </>
   );
