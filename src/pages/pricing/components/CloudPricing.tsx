@@ -4,6 +4,7 @@ import { Box, Grid, Input, Slider, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { formatCcy, handleInvalidValue } from "../../../utils";
 import HighAvailabilityInfo from "./HighAvailabilityInfo";
+import { red } from "@material-ui/core/colors";
 
 const useStyles = makeStyles({
   root: {
@@ -13,7 +14,11 @@ const useStyles = makeStyles({
     width: 42,
   },
   box: {
-    margin: 50,
+    marginLeft: 48,
+    marginRight: 48,
+    // backgroundColor: red[50],
+    paddingLeft: 8,
+    paddingRight: 16,
   },
 });
 
