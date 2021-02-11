@@ -9,7 +9,7 @@ const useStyles = makeStyles({
     width: 250,
   },
   input: {
-    width: 42, // 42
+    width: 42,
   },
 });
 

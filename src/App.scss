@@ -1,3 +1,13 @@
 body {
   font-family: 'Roboto', sans-serif;
 }
+
+.app-container {
+  margin: 50px;
+  // margin: variable-exists($name: --page-margin--right);
+  //some way of making this common, use a css variable?
+}
+
+h1 {
+  margin-bottom: 1rem
+}

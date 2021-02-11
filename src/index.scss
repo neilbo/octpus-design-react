@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+:root {
+  --base-spacing: 8px;
+  --sm-spacing: --base-spacing / 2;
+  --md-spacing: --base-spacing * 2;
+  --lg-spacing: --base-spacing * 4;
+
+  --page-margin--right: 50px;
+}
