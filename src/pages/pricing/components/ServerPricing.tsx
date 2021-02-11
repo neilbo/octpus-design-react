@@ -6,6 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { formatCcy, handleInvalidValue } from "../../../utils";
 import { FormControlLabel } from "@material-ui/core";
 import { Checkbox } from "@material-ui/core";
+import HighAvailabilityInfo from "./HighAvailabilityInfo";
 
 const useStyles = makeStyles({
   root: {
@@ -138,10 +139,7 @@ const ServerPricing = () => {
           </span>
           <span> / Month</span>
         </p>
-        <p>
-          High availability feature included in plan with more than 100
-          deployment targets.
-        </p>
+        <HighAvailabilityInfo />
 
         <Grid item>
           <Typography>

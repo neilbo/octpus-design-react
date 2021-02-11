@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Box, Grid, Input, Slider, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { formatCcy, handleInvalidValue } from "../../../utils";
+import HighAvailabilityInfo from "./HighAvailabilityInfo";
 
 const useStyles = makeStyles({
   root: {
@@ -143,11 +144,7 @@ const CloudPricing = () => {
           </span>
           <span> / Month</span>
         </p>
-        <p>
-          High availability feature included in plan with more than 100
-          deployment targets
-        </p>
-
+        <HighAvailabilityInfo />
         <Grid item>
           <Typography>
             For{" "}
