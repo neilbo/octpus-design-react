@@ -11,6 +11,9 @@ const useStyles = makeStyles({
   input: {
     width: 42,
   },
+  box: {
+    margin: 50,
+  },
 });
 
 const FREE_TARGETS = 10;
@@ -132,8 +135,7 @@ const CloudPricing = () => {
 
   return (
     <>
-      <Box>
-        <h2>Cloud</h2>
+      <Box className={classes.box}>
         <p>
           <span>
             {formatCcy(totalPrice)}
@@ -143,7 +145,7 @@ const CloudPricing = () => {
         </p>
         <p>
           High availability feature included in plan with more than 100
-          deployment
+          deployment targets
         </p>
 
         <Grid item>

@@ -1,13 +1,6 @@
-body {
-  font-family: 'Roboto', sans-serif;
-}
+@import './resources/styles.scss';
 
-.app-container {
+.app {
   margin: 50px;
-  // margin: variable-exists($name: --page-margin--right);
-  //some way of making this common, use a css variable?
-}
-
-h1 {
-  margin-bottom: 1rem
+  // margin: var(--xxlg-spacing); // Why you no work?
 }

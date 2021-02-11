@@ -2,7 +2,6 @@ import React, { SetStateAction } from "react";
 import "./App.scss";
 import Cloud from "./pages/pricing/components/CloudPricing";
 import Server from "./pages/pricing/components/ServerPricing";
-import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
@@ -22,8 +21,8 @@ function App() {
 
   return (
     <>
-      <section className="app-container">
-        <h1>Pricing Page</h1>
+      <section className="app">
+        <h1>Pricing</h1>
         <Tabs value={selectedTab} onChange={handleChange} aria-label="Pricing Tabs">
           <Tab label="Cloud" {...a11yProps(0)} />
           <Tab label="Server" {...a11yProps(1)} />

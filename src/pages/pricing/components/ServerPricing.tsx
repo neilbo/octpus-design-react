@@ -14,6 +14,10 @@ const useStyles = makeStyles({
   input: {
     width: 42,
   },
+  box: {
+    margin: 50,
+  },
+
 });
 
 const FREE_TARGETS = 10;
@@ -124,8 +128,7 @@ const ServerPricing = () => {
 
   return (
     <>
-      <Box>
-        <h2>Server</h2>
+      <Box className={classes.box}>
         <p>
           <span>
             {renderUnlimitedTargetsChecked
