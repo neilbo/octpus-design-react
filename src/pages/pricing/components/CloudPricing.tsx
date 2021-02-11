@@ -5,37 +5,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import { formatCcy, handleInvalidValue } from "../../../utils";
 import HighAvailabilityInfo from "./HighAvailabilityInfo";
 import { red } from "@material-ui/core/colors";
+import styles from "./Pricing.module.scss";
 
 
 const useStyles = makeStyles((theme) => ({
-  inputs: { // rename this
-    padding: '1em', // TODO :: fix this 
-    backgroundColor: red[200],
 
-  },
-  inputNumber: {
-    width: 42, // fix this
-  },
-  box: {
-    // marginLeft: 200,
-    // marginRight: 200,
-    backgroundColor: red[50],
-    paddingLeft: 8,
-    paddingRight: 16,
-  },
-  totalPrice: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    fontSize: '2em',
-    fontWeight: 600,
-  },
-  sliderContainer: {
-    display: 'flex',
-  },
-  slider: {
-    alignSelf: 'flex-end',
-  },
   paper: {
     padding: theme.spacing(2),
     textAlign: 'center',
@@ -162,100 +136,100 @@ const CloudPricing = () => {
 
   return (
     <>
-      <Box className={classes.box}>
+      <Box className={styles.pricing}>
         <Grid container spacing={2} justify="flex-end">
           <Grid item>
             <HighAvailabilityInfo />
           </Grid>
         </Grid>
-
+        <div></div>
         <Grid container spacing={2}>
-          <Grid item xs={12} sm={6}> 
-          {/* sliders and inputs */}
-            <Grid item className={classes.inputs}>
-              <Typography>
-                For{" "}
-                {valueTargets <= FREE_TARGETS
-                  ? ` up to 10 deployment targets`
-                  : " up to " + valueTargets + " deployment targets "}
-              </Typography>
+          <Grid xs={12} sm={6} className={styles.controls_container}>
 
-                <Grid container spacing={4}>
-                  <Grid item xs className={classes.sliderContainer}>
-                    <Slider className={classes.slider}
-                      value={typeof valueTargets === "number" ? valueTargets : 0}
-                      onChange={handleSliderChange}
-                      aria-labelledby="input-slider"
-                      min={10}
-                      max={5000}
-                    />
-                  </Grid>
-                  <Grid item xs={2}> 
-                  {/* center input */}
-                    <Input
-                      className={classes.inputNumber}
-                      value={valueTargets}
-                      margin="dense"
-                      onChange={(e) =>
-                        updateUserTargets(parseInt(e.target.value, 10))
-                      }
-                      onBlur={handleBlur}
-                      inputProps={{
-                        step: 10,
-                        min: 10,
-                        max: 5000,
-                        type: "number",
-                        "aria-labelledby": "input-slider",
-                      }}
-                    />
-                  </Grid>
-                </Grid>
+            <Grid container spacing={2}>
+              <Grid item xs={12} className={styles.slider_info}>
+                <Typography>
+                  For{" "}
+                  {valueTargets <= FREE_TARGETS
+                    ? ` up to 10 deployment targets`
+                    : " up to " + valueTargets + " deployment targets "}
+                </Typography>
+              </Grid>
+              <Grid item xs className={styles.slider}>
+                <Slider
+                  value={typeof valueTargets === "number" ? valueTargets : 0}
+                  onChange={handleSliderChange}
+                  aria-labelledby="input-slider"
+                  min={10}
+                  max={5000}
+                />
+              </Grid>
+              <Grid item xs={2} className={styles.input}>
+                <Input
+                  className={styles.input_number}
+                  value={valueTargets}
+                  margin="dense"
+                  onChange={(e) =>
+                    updateUserTargets(parseInt(e.target.value, 10))
+                  }
+                  onBlur={handleBlur}
+                  inputProps={{
+                    step: 10,
+                    min: 10,
+                    max: 5000,
+                    type: "number",
+                    "aria-labelledby": "input-slider",
+                    disableUnderline: true
+                  }}
+                />
+              </Grid>
+            </Grid>
+            {/*  */}
+            <Grid container spacing={2}>
+              <Grid item xs={12} className={styles.slider_info}>
                 <Typography>
                   For{" "}
                   {valueMinutes <= FREE_TARGETS
                     ? ` free deployment minutes `
                     : " " + valueMinutes + " deployment minutes "}
                 </Typography>
-                <Grid container spacing={2} alignItems="center">
-                  <Grid item xs>
-                    <Slider
-                      value={typeof valueMinutes === "number" ? valueMinutes : 0}
-                      onChange={handleSliderChangeMinutes}
-                      aria-labelledby="input-slider-minutes"
-                      min={100}
-                      max={10000}
-                    />
-                  </Grid>
-                  <Grid item>
-                    <Input
-                      className={classes.inputNumber}
-                      value={valueMinutes}
-                      margin="dense"
-                      onChange={(e) =>
-                        setValidMinutes(parseInt(e.target.value, 10))
-                      }
-                      onBlur={handleBlurMinutes}
-                      inputProps={{
-                        step: 10,
-                        min: 100,
-                        max: 10000,
-                        type: "number",
-                        "aria-labelledby": "input-slider-minutes",
-                      }}
-                    />
-                  </Grid>
-                </Grid>
+              </Grid>
+              <Grid item xs className={styles.slider}>
+                <Slider
+                  value={typeof valueMinutes === "number" ? valueMinutes : 0}
+                  onChange={handleSliderChangeMinutes}
+                  aria-labelledby="input-slider-minutes"
+                  min={100}
+                  max={10000}
+                />
+              </Grid>
+              <Grid item xs={2} className={styles.input}>
+                <Input
+                  className={styles.input_number}
+                  value={valueMinutes}
+                  margin="dense"
+                  onChange={(e) =>
+                    setValidMinutes(parseInt(e.target.value, 10))
+                  }
+                  onBlur={handleBlurMinutes}
+                  inputProps={{
+                    step: 10,
+                    min: 100,
+                    max: 10000,
+                    type: "number",
+                    "aria-labelledby": "input-slider-minutes",
+                    disableUnderline: true
+                  }}
+                />
+              </Grid>
             </Grid>
-            {/* <Paper className={classes.paper}>xs=12 sm=6</Paper> */}
           </Grid>
-          <Grid item xs={12} sm={6} className={classes.totalPrice}>
+          <Grid item xs={12} sm={6} className={styles.total_price}>
             {/* Total */}
             <p>
-              <span>
-                {formatCcy(totalPrice)}
-                <sup>*</sup>
-              </span>
-              <span> / Month</span>
+              {formatCcy(totalPrice)}
+              <sup>*</sup>
+              <p className={styles.description}>Estimated Monthly Cost</p>
             </p>
             {/* <Paper className={classes.paper}>xs=12 sm=6</Paper> */}
           </Grid>
