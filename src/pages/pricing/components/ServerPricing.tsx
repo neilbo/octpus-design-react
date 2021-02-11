@@ -131,10 +131,10 @@ const ServerPricing = () => {
             <HighAvailabilityInfo />
           </Grid>
         </Grid>
+        <div></div>
         <Grid container spacing={2}>
-          <Grid xs={12} sm={6} className={styles.controls_container}>
+          <Grid item xs={12} sm={6} className={styles.controls_container}>
             <Grid container spacing={2}>
-              {/* Good */}
               <Grid item xs={12} className={styles.slider_info}>
                 <Typography>
                   For{" "}
@@ -144,35 +144,37 @@ const ServerPricing = () => {
                 </Typography>
               </Grid>
               {renderUnlimitedTargetsChecked ? null : (
-                <Grid container spacing={2}>
+                <>
+                  <Grid container spacing={0}>
                   <Grid item xs className={styles.slider}>
-                    <Slider
-                      value={valueTargets}
-                      onChange={handleSliderChange}
-                      aria-labelledby="input-slider"
-                      min={10}
-                      max={2000}
-                    />
+                      <Slider
+                        value={valueTargets}
+                        onChange={handleSliderChange}
+                        aria-labelledby="input-slider"
+                        min={10}
+                        max={2000}
+                      />
+                    </Grid>
+                    <Grid item xs={2} className={styles.input}>
+                      <Input
+                        className={styles.input}
+                        value={valueTargets}
+                        margin="dense"
+                        onChange={(e) =>
+                          updateUserTargets(parseInt(e.target.value, 10))
+                        }
+                        onBlur={handleBlur}
+                        inputProps={{
+                          step: 10,
+                          min: 10,
+                          max: 2000,
+                          type: "number",
+                          "aria-labelledby": "input-slider",
+                        }}
+                      />
+                    </Grid>
                   </Grid>
-                  <Grid item xs={2} className={styles.input}>
-                    <Input
-                      className={styles.input}
-                      value={valueTargets}
-                      margin="dense"
-                      onChange={(e) =>
-                        updateUserTargets(parseInt(e.target.value, 10))
-                      }
-                      onBlur={handleBlur}
-                      inputProps={{
-                        step: 10,
-                        min: 10,
-                        max: 2000,
-                        type: "number",
-                        "aria-labelledby": "input-slider",
-                      }}
-                    />
-                  </Grid>
-                </Grid>
+                </>
               )}
               <FormControlLabel
                 control={
@@ -184,7 +186,6 @@ const ServerPricing = () => {
                 }
                 label="Unlimited Targets"
               />
-              {/* Good */}
             </Grid>
           </Grid>
           <Grid xs={12} sm={6} className={styles.total_price}>

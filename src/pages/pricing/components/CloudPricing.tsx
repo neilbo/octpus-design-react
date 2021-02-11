@@ -143,8 +143,7 @@ const CloudPricing = () => {
         </Grid>
         <div></div>
         <Grid container spacing={2}>
-          <Grid xs={12} sm={6} className={styles.controls_container}>
-
+          <Grid item xs={12} sm={6} className={styles.controls_container}>
             <Grid container spacing={2}>
               <Grid item xs={12} className={styles.slider_info}>
                 <Typography>
@@ -183,7 +182,6 @@ const CloudPricing = () => {
                 />
               </Grid>
             </Grid>
-            {/*  */}
             <Grid container spacing={2}>
               <Grid item xs={12} className={styles.slider_info}>
                 <Typography>
