@@ -38,7 +38,7 @@ function App() {
       <section className={classes.app}>
         <Grid container spacing={2}>
           <Grid item xs></Grid>
-          <Grid item xs={12} sm={8}>
+          <Grid item xs={10} sm={8}>
             <h1>Pricing</h1>
             <Tabs value={selectedTab} onChange={handleChange} aria-label="Pricing Tabs">
               <Tab label="Cloud" {...a11yProps(0)} 

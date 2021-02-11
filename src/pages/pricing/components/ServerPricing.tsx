@@ -145,7 +145,7 @@ const ServerPricing = () => {
               </Grid>
               {renderUnlimitedTargetsChecked ? null : (
                 <>
-                  <Grid container spacing={0}>
+                  <Grid container spacing={2}>
                   <Grid item xs className={styles.slider}>
                       <Slider
                         value={valueTargets}
