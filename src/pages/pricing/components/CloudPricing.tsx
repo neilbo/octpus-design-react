@@ -1,26 +1,47 @@
 import * as React from "react";
 import { useState } from "react";
-import { Box, Grid, Input, Slider, Typography } from "@material-ui/core";
+import { Box, Grid, Input, Slider, Typography, Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { formatCcy, handleInvalidValue } from "../../../utils";
 import HighAvailabilityInfo from "./HighAvailabilityInfo";
 import { red } from "@material-ui/core/colors";
 
-const useStyles = makeStyles({
-  root: {
-    width: 250,
+
+const useStyles = makeStyles((theme) => ({
+  inputs: { // rename this
+    padding: '1em', // TODO :: fix this 
+    backgroundColor: red[200],
+
   },
-  input: {
-    width: 42,
+  inputNumber: {
+    width: 42, // fix this
   },
   box: {
-    marginLeft: 48,
-    marginRight: 48,
-    // backgroundColor: red[50],
+    // marginLeft: 200,
+    // marginRight: 200,
+    backgroundColor: red[50],
     paddingLeft: 8,
     paddingRight: 16,
   },
-});
+  totalPrice: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: '2em',
+    fontWeight: 600,
+  },
+  sliderContainer: {
+    display: 'flex',
+  },
+  slider: {
+    alignSelf: 'flex-end',
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary
+  }
+}));
 
 const FREE_TARGETS = 10;
 const FREE_MINUTES = 100;
@@ -142,91 +163,105 @@ const CloudPricing = () => {
   return (
     <>
       <Box className={classes.box}>
-        <p>
-          <span>
-            {formatCcy(totalPrice)}
-            <sup>*</sup>
-          </span>
-          <span> / Month</span>
-        </p>
-        <HighAvailabilityInfo />
-        <Grid item>
-          <Typography>
-            For{" "}
-            {valueTargets <= FREE_TARGETS
-              ? ` up to 10 deployment targets`
-              : " up to " + valueTargets + " deployment targets "}
-          </Typography>
-
-          <div className={classes.root}>
-            <Grid container spacing={2} alignItems="center">
-              <Grid item xs>
-                <Slider
-                  value={typeof valueTargets === "number" ? valueTargets : 0}
-                  onChange={handleSliderChange}
-                  aria-labelledby="input-slider"
-                  min={10}
-                  max={5000}
-                />
-              </Grid>
-              <Grid item>
-                <Input
-                  className={classes.input}
-                  value={valueTargets}
-                  margin="dense"
-                  onChange={(e) =>
-                    updateUserTargets(parseInt(e.target.value, 10))
-                  }
-                  onBlur={handleBlur}
-                  inputProps={{
-                    step: 10,
-                    min: 10,
-                    max: 5000,
-                    type: "number",
-                    "aria-labelledby": "input-slider",
-                  }}
-                />
-              </Grid>
-            </Grid>
-          </div>
-          <div className={classes.root}>
-            <Typography>
-              For{" "}
-              {valueMinutes <= FREE_TARGETS
-                ? ` free deployment minutes `
-                : " " + valueMinutes + " deployment minutes "}
-            </Typography>
-            <Grid container spacing={2} alignItems="center">
-              <Grid item xs>
-                <Slider
-                  value={typeof valueMinutes === "number" ? valueMinutes : 0}
-                  onChange={handleSliderChangeMinutes}
-                  aria-labelledby="input-slider-minutes"
-                  min={100}
-                  max={10000}
-                />
-              </Grid>
-              <Grid item>
-                <Input
-                  className={classes.input}
-                  value={valueMinutes}
-                  margin="dense"
-                  onChange={(e) =>
-                    setValidMinutes(parseInt(e.target.value, 10))
-                  }
-                  onBlur={handleBlurMinutes}
-                  inputProps={{
-                    step: 10,
-                    min: 100,
-                    max: 10000,
-                    type: "number",
-                    "aria-labelledby": "input-slider-minutes",
-                  }}
-                />
-              </Grid>
-            </Grid>
-          </div>
+        <Grid container spacing={2} justify="flex-end">
+          <Grid item>
+            <HighAvailabilityInfo />
+          </Grid>
         </Grid>
+
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={6}> 
+          {/* sliders and inputs */}
+            <Grid item className={classes.inputs}>
+              <Typography>
+                For{" "}
+                {valueTargets <= FREE_TARGETS
+                  ? ` up to 10 deployment targets`
+                  : " up to " + valueTargets + " deployment targets "}
+              </Typography>
+
+                <Grid container spacing={4}>
+                  <Grid item xs className={classes.sliderContainer}>
+                    <Slider className={classes.slider}
+                      value={typeof valueTargets === "number" ? valueTargets : 0}
+                      onChange={handleSliderChange}
+                      aria-labelledby="input-slider"
+                      min={10}
+                      max={5000}
+                    />
+                  </Grid>
+                  <Grid item xs={2}> 
+                  {/* center input */}
+                    <Input
+                      className={classes.inputNumber}
+                      value={valueTargets}
+                      margin="dense"
+                      onChange={(e) =>
+                        updateUserTargets(parseInt(e.target.value, 10))
+                      }
+                      onBlur={handleBlur}
+                      inputProps={{
+                        step: 10,
+                        min: 10,
+                        max: 5000,
+                        type: "number",
+                        "aria-labelledby": "input-slider",
+                      }}
+                    />
+                  </Grid>
+                </Grid>
+                <Typography>
+                  For{" "}
+                  {valueMinutes <= FREE_TARGETS
+                    ? ` free deployment minutes `
+                    : " " + valueMinutes + " deployment minutes "}
+                </Typography>
+                <Grid container spacing={2} alignItems="center">
+                  <Grid item xs>
+                    <Slider
+                      value={typeof valueMinutes === "number" ? valueMinutes : 0}
+                      onChange={handleSliderChangeMinutes}
+                      aria-labelledby="input-slider-minutes"
+                      min={100}
+                      max={10000}
+                    />
+                  </Grid>
+                  <Grid item>
+                    <Input
+                      className={classes.inputNumber}
+                      value={valueMinutes}
+                      margin="dense"
+                      onChange={(e) =>
+                        setValidMinutes(parseInt(e.target.value, 10))
+                      }
+                      onBlur={handleBlurMinutes}
+                      inputProps={{
+                        step: 10,
+                        min: 100,
+                        max: 10000,
+                        type: "number",
+                        "aria-labelledby": "input-slider-minutes",
+                      }}
+                    />
+                  </Grid>
+                </Grid>
+            </Grid>
+            {/* <Paper className={classes.paper}>xs=12 sm=6</Paper> */}
+          </Grid>
+          <Grid item xs={12} sm={6} className={classes.totalPrice}>
+            {/* Total */}
+            <p>
+              <span>
+                {formatCcy(totalPrice)}
+                <sup>*</sup>
+              </span>
+              <span> / Month</span>
+            </p>
+            {/* <Paper className={classes.paper}>xs=12 sm=6</Paper> */}
+          </Grid>
+        </Grid>
+
+
       </Box>
     </>
   );
