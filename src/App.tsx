@@ -4,14 +4,17 @@ import Cloud from "./pages/pricing/components/CloudPricing";
 import Server from "./pages/pricing/components/ServerPricing";
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import classes from "*.module.css";
 import { Grid, makeStyles } from "@material-ui/core";
-import { grey } from "@material-ui/core/colors";
+import { red } from "@material-ui/core/colors";
+import { CloudCircle, StorageOutlined } from "@material-ui/icons";
 
 const useStyles = makeStyles({
   app: {
     marginTop: 32,
     marginBottom: 16
+  },
+  tabIcon: {
+    color: red[900]
   }
 })
 
@@ -38,8 +41,12 @@ function App() {
           <Grid item xs={12} sm={8}>
             <h1>Pricing</h1>
             <Tabs value={selectedTab} onChange={handleChange} aria-label="Pricing Tabs">
-              <Tab label="Cloud" {...a11yProps(0)} />
-              <Tab label="Server" {...a11yProps(1)} />
+              <Tab label="Cloud" {...a11yProps(0)} 
+              icon={<CloudCircle className={classes.tabIcon} />}
+              />
+              <Tab label="Server" {...a11yProps(1)}
+              icon={<StorageOutlined className={classes.tabIcon} />}
+               />
             </Tabs>
             {selectedTab === 0 && <Cloud />}
             {selectedTab === 1 && <Server />}
