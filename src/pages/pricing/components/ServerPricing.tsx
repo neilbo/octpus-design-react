@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import classNames from "classnames";
-import { Box, Grid, Input, Paper, Slider, Typography } from "@material-ui/core";
+import { Box, Card, Grid, Input, Paper, Slider, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { formatCcy, handleInvalidValue } from "../../../utils";
 import { FormControlLabel } from "@material-ui/core";
@@ -146,7 +146,7 @@ const ServerPricing = () => {
               {renderUnlimitedTargetsChecked ? null : (
                 <>
                   <Grid container spacing={2}>
-                  <Grid item xs className={styles.slider}>
+                    <Grid item xs className={styles.slider}>
                       <Slider
                         value={valueTargets}
                         onChange={handleSliderChange}
@@ -190,13 +190,15 @@ const ServerPricing = () => {
           </Grid>
           <Grid xs={12} sm={6} className={styles.total_price}>
             {/* Total */}
-            <p>
-              {renderUnlimitedTargetsChecked
-                ? UNLIMITED_PRICE
-                : formatCcy(totalPrice)}
-              <sup>*</sup>
-              <p className={styles.description}>Estimated Monthly Cost</p>
-            </p>
+            <Card className={styles.card}>
+              <p>
+                {renderUnlimitedTargetsChecked
+                  ? UNLIMITED_PRICE
+                  : formatCcy(totalPrice)}
+                <sup>*</sup>
+                <p className={styles.description}>Estimated Monthly Cost</p>
+              </p>
+            </Card>
             {/* <Paper className={classes.paper}>xs=12 sm=6</Paper> */}
           </Grid>
         </Grid>

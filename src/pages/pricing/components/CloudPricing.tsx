@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-import { Box, Grid, Input, Slider, Typography, Paper } from "@material-ui/core";
+import { Box, Grid, Input, Slider, Typography, Paper, Card } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { formatCcy, handleInvalidValue } from "../../../utils";
 import HighAvailabilityInfo from "./HighAvailabilityInfo";
@@ -223,11 +223,15 @@ const CloudPricing = () => {
           </Grid>
           <Grid item xs={12} sm={6} className={styles.total_price}>
             {/* Total */}
-            <p>
-              {formatCcy(totalPrice)}
-              <sup>*</sup>
-              <p className={styles.description}>Estimated Monthly Cost</p>
-            </p>
+            <Card className={styles.card}>
+              <p>
+                {formatCcy(totalPrice)}
+                <sup>*</sup>
+                <p className={styles.description}>Estimated Monthly Cost</p>
+
+              </p>
+            </Card>
+
             {/* <Paper className={classes.paper}>xs=12 sm=6</Paper> */}
           </Grid>
         </Grid>
