@@ -1,31 +1,27 @@
 import * as React from "react";
 import { useState } from "react";
 import classNames from "classnames";
-import { Box, Grid, Input, Slider, Typography } from "@material-ui/core";
+import { Box, Grid, Input, Paper, Slider, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { formatCcy, handleInvalidValue } from "../../../utils";
 import { FormControlLabel } from "@material-ui/core";
 import { Checkbox } from "@material-ui/core";
 import HighAvailabilityInfo from "./HighAvailabilityInfo";
+import styles from "./Pricing.module.scss";
 
-const useStyles = makeStyles({
-  root: {
-    width: 250,
-  },
-  input: {
-    width: 42,
-  },
-  box: {
-    margin: 50,
-  },
-
-});
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary
+  }
+}));
 
 const FREE_TARGETS = 10;
 const COST_PER_TARGET = 10;
 const HIGH_AVAILABILITY_TARGETS = 100;
 const UNLIMITED_TARGETS = 2001;
-const UNLIMITED_PRICE = "192,000";
+const UNLIMITED_PRICE = "$192,000.00";
 
 const isChargedTargets = (valueTargets: number | string): boolean => {
   return valueTargets > FREE_TARGETS;
@@ -129,70 +125,79 @@ const ServerPricing = () => {
 
   return (
     <>
-      <Box className={classes.box}>
-        <p>
-          <span>
-            {renderUnlimitedTargetsChecked
-              ? UNLIMITED_PRICE
-              : formatCcy(totalPrice)}
-            <sup>*</sup>
-          </span>
-          <span> / Month</span>
-        </p>
-        <HighAvailabilityInfo />
-
-        <Grid item>
-          <Typography>
-            For{" "}
-            {renderUnlimitedTargetsChecked
-              ? ` unlimited deployment targets`
-              : " up to " + valueTargets + " deployment targets "}
-          </Typography>
-
-          <div className={classes.root}>
-            {renderUnlimitedTargetsChecked ? null : (
-              <Grid container spacing={2} alignItems="center">
-                <Grid item xs>
-                  <Slider
-                    value={valueTargets}
-                    onChange={handleSliderChange}
-                    aria-labelledby="input-slider"
-                    min={10}
-                    max={2000}
-                  />
-                </Grid>
-
-                <Grid item>
-                  <Input
-                    className={classes.input}
-                    value={valueTargets}
-                    margin="dense"
-                    onChange={(e) =>
-                      updateUserTargets(parseInt(e.target.value, 10))
-                    }
-                    onBlur={handleBlur}
-                    inputProps={{
-                      step: 10,
-                      min: 10,
-                      max: 2000,
-                      type: "number",
-                      "aria-labelledby": "input-slider",
-                    }}
-                  />
-                </Grid>
+      <Box className={styles.pricing}>
+        <Grid container spacing={2} justify="flex-end">
+          <Grid item>
+            <HighAvailabilityInfo />
+          </Grid>
+        </Grid>
+        <Grid container spacing={2}>
+          <Grid xs={12} sm={6} className={styles.controls_container}>
+            <Grid container spacing={2}>
+              {/* Good */}
+              <Grid item xs={12} className={styles.slider_info}>
+                <Typography>
+                  For{" "}
+                  {renderUnlimitedTargetsChecked
+                    ? ` unlimited deployment targets`
+                    : " up to " + valueTargets + " deployment targets "}
+                </Typography>
               </Grid>
-            )}
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={renderUnlimitedTargetsChecked}
-                  onChange={unlimitedTargetsCheck}
-                  name="unlimitedTargets"
-                />
-              }
-              label="Unlimited Targets"
-            />
-          </div>
+              {renderUnlimitedTargetsChecked ? null : (
+                <Grid container spacing={2}>
+                  <Grid item xs className={styles.slider}>
+                    <Slider
+                      value={valueTargets}
+                      onChange={handleSliderChange}
+                      aria-labelledby="input-slider"
+                      min={10}
+                      max={2000}
+                    />
+                  </Grid>
+                  <Grid item xs={2} className={styles.input}>
+                    <Input
+                      className={styles.input}
+                      value={valueTargets}
+                      margin="dense"
+                      onChange={(e) =>
+                        updateUserTargets(parseInt(e.target.value, 10))
+                      }
+                      onBlur={handleBlur}
+                      inputProps={{
+                        step: 10,
+                        min: 10,
+                        max: 2000,
+                        type: "number",
+                        "aria-labelledby": "input-slider",
+                      }}
+                    />
+                  </Grid>
+                </Grid>
+              )}
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={renderUnlimitedTargetsChecked}
+                    onChange={unlimitedTargetsCheck}
+                    name="unlimitedTargets"
+                  />
+                }
+                label="Unlimited Targets"
+              />
+              {/* Good */}
+            </Grid>
+          </Grid>
+          <Grid xs={12} sm={6} className={styles.total_price}>
+            {/* Total */}
+            <p>
+              {renderUnlimitedTargetsChecked
+                ? UNLIMITED_PRICE
+                : formatCcy(totalPrice)}
+              <sup>*</sup>
+              <p className={styles.description}>Estimated Monthly Cost</p>
+            </p>
+            {/* <Paper className={classes.paper}>xs=12 sm=6</Paper> */}
+          </Grid>
         </Grid>
       </Box>
     </>

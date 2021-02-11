@@ -9,7 +9,6 @@ import styles from "./Pricing.module.scss";
 
 
 const useStyles = makeStyles((theme) => ({
-
   paper: {
     padding: theme.spacing(2),
     textAlign: 'center',
@@ -234,8 +233,6 @@ const CloudPricing = () => {
             {/* <Paper className={classes.paper}>xs=12 sm=6</Paper> */}
           </Grid>
         </Grid>
-
-
       </Box>
     </>
   );
