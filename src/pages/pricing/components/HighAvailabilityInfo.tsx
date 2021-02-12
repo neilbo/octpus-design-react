@@ -1,14 +1,14 @@
 import * as React from "react";
 import Chip from '@material-ui/core/Chip';
-import LockOpen from '@material-ui/icons/LockOpen';
+import MoneyOff from '@material-ui/icons/MoneyOff';
 import { makeStyles } from "@material-ui/core";
-import { blue } from "@material-ui/core/colors";
 
 
 const useStyles = makeStyles({
   highAvailability: {
-    backgroundColor: blue[100],
-    color: blue[900],
+    // TODO :: Clean up
+    // backgroundColor: blue[100],
+    // color: blue[900],
   }
 })
 const HighAvailabilityInfo = () => {
@@ -17,7 +17,8 @@ const HighAvailabilityInfo = () => {
     return (
         <Chip
         className={classes.highAvailability}
-        icon={<LockOpen className={classes.highAvailability} />}
+        icon={<MoneyOff className={classes.highAvailability} />}
+        color="primary"
         label="High availability feature included in plan with more than 100
       deployment targets"
       />

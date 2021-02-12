@@ -1,7 +1,13 @@
 @import './resources/styles.scss';
 
-// .app {
-//   margin: 50px;
-//   background-color: global-variable-exists($name: red[500]);
-//   // margin: var(--xxlg-spacing); // Why you no work?
-// }
+.app {
+  // TODO :: use these styles instead of useStyles/makeStyles
+  // TODO :: use spacing variables
+  margin-top: 32px;
+  margin-bottom: 16px;
+  padding: 48px;
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(47,128,216,1) 30%, rgba(76,176,101,1) 90%);
+}
+.grid-container {
+  background: white;
+}

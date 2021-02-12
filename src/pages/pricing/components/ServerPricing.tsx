@@ -1,21 +1,22 @@
 import * as React from "react";
 import { useState } from "react";
-import classNames from "classnames";
-import { Box, Card, Grid, Input, Paper, Slider, Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+// import classNames from "classnames";
+// import { makeStyles } from "@material-ui/core/styles";
+import { Box, Card, Grid, Input, Slider, Typography } from "@material-ui/core";
 import { formatCcy, handleInvalidValue } from "../../../utils";
 import { FormControlLabel } from "@material-ui/core";
 import { Checkbox } from "@material-ui/core";
 import HighAvailabilityInfo from "./HighAvailabilityInfo";
 import styles from "./Pricing.module.scss";
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary
-  }
-}));
+// TODO :: not used but for reference
+// const useStyles = makeStyles((theme) => ({
+//   pricing: {
+//     padding: theme.spacing(2),
+//     textAlign: 'center',
+//     color: theme.palette.text.secondary
+//   }
+// }));
 
 const FREE_TARGETS = 10;
 const COST_PER_TARGET = 10;
@@ -29,7 +30,7 @@ const isChargedTargets = (valueTargets: number | string): boolean => {
 
 const ServerPricing = () => {
   // Styling
-  const classes = useStyles();
+  // const classes = useStyles();
 
   // Deployment Targets
   const [valueTargets, setValueTargets] = useState(FREE_TARGETS);
@@ -199,7 +200,6 @@ const ServerPricing = () => {
                 <p className={styles.description}>Estimated Monthly Cost</p>
               </p>
             </Card>
-            {/* <Paper className={classes.paper}>xs=12 sm=6</Paper> */}
           </Grid>
         </Grid>
       </Box>

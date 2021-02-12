@@ -1,20 +1,20 @@
 import * as React from "react";
 import { useState } from "react";
-import { Box, Grid, Input, Slider, Typography, Paper, Card } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+// import { makeStyles } from "@material-ui/core/styles";
+// import classNames from "classnames";
+import { Box, Grid, Input, Slider, Typography, Card } from "@material-ui/core";
 import { formatCcy, handleInvalidValue } from "../../../utils";
 import HighAvailabilityInfo from "./HighAvailabilityInfo";
-import { red } from "@material-ui/core/colors";
 import styles from "./Pricing.module.scss";
 
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary
-  }
-}));
+  // TODO :: not used but for reference
+// const useStyles = makeStyles((theme) => ({
+//   pricing: {
+//     padding: theme.spacing(2),
+//     textAlign: 'center',
+//     color: theme.palette.text.secondary
+//   }
+// }));
 
 const FREE_TARGETS = 10;
 const FREE_MINUTES = 100;
@@ -31,7 +31,7 @@ const isChargedMinutes = (valueMinutes: number | string): boolean => {
 };
 
 const CloudPricing = () => {
-  const classes = useStyles();
+  // const classes = useStyles();
 
   // Deployment Targets
   const [valueTargets, setValueTargets] = useState(FREE_TARGETS);
@@ -94,7 +94,6 @@ const CloudPricing = () => {
   );
   const [haCheckboxVal, setHaCheckboxVal] = useState(false);
   const isEligibleHA = valueTargets >= HIGH_AVAILABILITY_TARGETS;
-  const renderHaChecked = haCheckboxVal || isEligibleHA;
   const highAvailabilityCheck = (e: { target: { checked: any } }) => {
     // Updating checkbox state
     const newHaCheckboxVal = e.target.checked;
@@ -231,8 +230,6 @@ const CloudPricing = () => {
 
               </p>
             </Card>
-
-            {/* <Paper className={classes.paper}>xs=12 sm=6</Paper> */}
           </Grid>
         </Grid>
       </Box>
