@@ -7,7 +7,7 @@ import { formatCcy, handleInvalidValue } from "../../../utils";
 import HighAvailabilityInfo from "./HighAvailabilityInfo";
 import styles from "./Pricing.module.scss";
 
-  // TODO :: not used but for reference
+// TODO :: not used but for reference
 // const useStyles = makeStyles((theme) => ({
 //   pricing: {
 //     padding: theme.spacing(2),
@@ -135,7 +135,7 @@ const CloudPricing = () => {
   return (
     <>
       <Box className={styles.pricing}>
-        <Grid container spacing={2} justify="flex-end">
+        <Grid container spacing={2} className={styles.high_availbility_container}>
           <Grid item>
             <HighAvailabilityInfo />
           </Grid>
@@ -223,12 +223,11 @@ const CloudPricing = () => {
           <Grid item xs={12} sm={6} className={styles.total_price}>
             {/* Total */}
             <Card className={styles.card}>
-              <p>
+              <p className={styles.amount}>
                 {formatCcy(totalPrice)}
                 <sup>*</sup>
-                <p className={styles.description}>Estimated Monthly Cost</p>
-
               </p>
+              <p className={styles.description}>Estimated Monthly Cost</p>
             </Card>
           </Grid>
         </Grid>

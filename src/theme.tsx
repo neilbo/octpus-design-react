@@ -9,7 +9,9 @@ const octopusDeployTheme = createMuiTheme({
         main: '#4CB065'
       },
     },
-    // Font
+    typography: {
+        fontSize: 16,
+    }
   });
   
   export default octopusDeployTheme;

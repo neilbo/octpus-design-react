@@ -127,7 +127,7 @@ const ServerPricing = () => {
   return (
     <>
       <Box className={styles.pricing}>
-        <Grid container spacing={2} justify="flex-end">
+        <Grid container spacing={2} className={styles.high_availbility_container}>
           <Grid item>
             <HighAvailabilityInfo />
           </Grid>
@@ -192,13 +192,13 @@ const ServerPricing = () => {
           <Grid xs={12} sm={6} className={styles.total_price}>
             {/* Total */}
             <Card className={styles.card}>
-              <p>
+              <p className={styles.amount} >
                 {renderUnlimitedTargetsChecked
                   ? UNLIMITED_PRICE
                   : formatCcy(totalPrice)}
                 <sup>*</sup>
-                <p className={styles.description}>Estimated Monthly Cost</p>
               </p>
+              <p className={styles.description}>Estimated Monthly Cost</p>
             </Card>
           </Grid>
         </Grid>

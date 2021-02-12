@@ -1,23 +1,14 @@
 import * as React from "react";
 import Chip from '@material-ui/core/Chip';
 import MoneyOff from '@material-ui/icons/MoneyOff';
-import { makeStyles } from "@material-ui/core";
+import styles from './HighAvailability.module.scss';
 
-
-const useStyles = makeStyles({
-  highAvailability: {
-    // TODO :: Clean up
-    // backgroundColor: blue[100],
-    // color: blue[900],
-  }
-})
 const HighAvailabilityInfo = () => {
-  const classes = useStyles();
 
     return (
         <Chip
-        className={classes.highAvailability}
-        icon={<MoneyOff className={classes.highAvailability} />}
+        className={styles.highAvailability}
+        icon={<MoneyOff className={styles.high_availability} />}
         color="primary"
         label="High availability feature included in plan with more than 100
       deployment targets"
