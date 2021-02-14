@@ -137,7 +137,7 @@ const CloudPricing = () => {
       <Box className={styles.pricing}>
         <Grid container spacing={2} className={styles.high_availbility_container}>
           <Grid item>
-            <HighAvailabilityInfo />
+            <HighAvailabilityInfo targets={valueTargets}/>
           </Grid>
         </Grid>
         <div></div>
