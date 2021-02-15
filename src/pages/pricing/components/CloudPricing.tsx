@@ -1,20 +1,9 @@
 import * as React from "react";
 import { useState } from "react";
-// import { makeStyles } from "@material-ui/core/styles";
-// import classNames from "classnames";
 import { Box, Grid, Input, Slider, Typography, Card } from "@material-ui/core";
 import { formatCcy, handleInvalidValue } from "../../../utils";
 import HighAvailabilityInfo from "./HighAvailabilityInfo";
 import styles from "./Pricing.module.scss";
-
-// TODO :: not used but for reference
-// const useStyles = makeStyles((theme) => ({
-//   pricing: {
-//     padding: theme.spacing(2),
-//     textAlign: 'center',
-//     color: theme.palette.text.secondary
-//   }
-// }));
 
 const FREE_TARGETS = 10;
 const FREE_MINUTES = 100;
@@ -31,8 +20,6 @@ const isChargedMinutes = (valueMinutes: number | string): boolean => {
 };
 
 const CloudPricing = () => {
-  // const classes = useStyles();
-
   // Deployment Targets
   const [valueTargets, setValueTargets] = useState(FREE_TARGETS);
 

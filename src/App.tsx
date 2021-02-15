@@ -6,7 +6,7 @@ import Tab from '@material-ui/core/Tab';
 import { Box, Grid } from "@material-ui/core";
 import { CloudCircle, StorageOutlined } from "@material-ui/icons";
 import { ThemeProvider } from '@material-ui/core';
-import octopusDeployTheme from './theme';
+import camouflage from './theme';
 import "./App.scss";
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
   return (
 
     <>
-      <ThemeProvider theme={octopusDeployTheme}>
+      <ThemeProvider theme={camouflage}>
 
         <Box className="app">
           <Grid container spacing={10} >

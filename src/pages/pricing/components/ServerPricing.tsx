@@ -1,22 +1,11 @@
 import * as React from "react";
 import { useState } from "react";
-// import classNames from "classnames";
-// import { makeStyles } from "@material-ui/core/styles";
 import { Box, Card, Grid, Input, Slider, Typography } from "@material-ui/core";
 import { formatCcy, handleInvalidValue } from "../../../utils";
 import { FormControlLabel } from "@material-ui/core";
 import { Checkbox } from "@material-ui/core";
 import HighAvailabilityInfo from "./HighAvailabilityInfo";
 import styles from "./Pricing.module.scss";
-
-// TODO :: not used but for reference
-// const useStyles = makeStyles((theme) => ({
-//   pricing: {
-//     padding: theme.spacing(2),
-//     textAlign: 'center',
-//     color: theme.palette.text.secondary
-//   }
-// }));
 
 const FREE_TARGETS = 10;
 const COST_PER_TARGET = 10;
@@ -29,9 +18,6 @@ const isChargedTargets = (valueTargets: number | string): boolean => {
 };
 
 const ServerPricing = () => {
-  // Styling
-  // const classes = useStyles();
-
   // Deployment Targets
   const [valueTargets, setValueTargets] = useState(FREE_TARGETS);
 

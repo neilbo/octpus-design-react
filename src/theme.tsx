@@ -1,6 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
-const octopusDeployTheme = createMuiTheme({
+const camouflage = createMuiTheme({
     palette: {
       primary: {
         main: '#2F80D8'
@@ -10,8 +10,8 @@ const octopusDeployTheme = createMuiTheme({
       },
     },
     typography: {
-        fontSize: 16,
+        // fontSize: 16,
     }
   });
   
-  export default octopusDeployTheme;
+  export default camouflage;
