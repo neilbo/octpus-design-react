@@ -7,7 +7,7 @@ import { Box, Grid } from "@material-ui/core";
 import { CloudCircle, StorageOutlined } from "@material-ui/icons";
 import { ThemeProvider } from '@material-ui/core';
 import camouflage from './theme';
-import "./App.scss";
+import { css } from '@emotion/css';
 
 function App() {
   const [selectedTab, setSelectedTab] = React.useState(0);
@@ -28,10 +28,18 @@ function App() {
     <>
       <ThemeProvider theme={camouflage}>
 
-        <Box className="app">
+        <Box className={css`
+         margin-top: 32px;
+         margin-bottom: 16px;
+         padding: 32px;
+        `}>
           <Grid container spacing={10} >
             <Grid item xs></Grid>
-            <Grid item xs={10} sm={8} className="grid-container">
+            <Grid item xs={10} sm={8}
+            className={css`
+            background: white;
+            border-radius: 4px;
+            `}>
               <h1>Pricing</h1>
               <Tabs value={selectedTab} onChange={handleChange} aria-label="Pricing Tabs">
                 <Tab

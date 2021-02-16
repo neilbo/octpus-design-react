@@ -1,2 +1,9 @@
 // Put some variables here
-
+:root {
+    --base-spacing: 8px;
+    --sm-spacing: 8px / 2;
+    --md-spacing: 8px * 2;
+    --lg-spacing: 8px * 4;
+    --xlg-spacing: 8px * 6;
+    --xxlg-spacing: 8px * 8;
+}

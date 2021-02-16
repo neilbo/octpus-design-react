@@ -1,3 +1,6 @@
+// @import "../../../resources/variables.scss";
+@import "../../../resources/styles.scss";
+
 .pricing {
     padding: 8px 16px;
 }
@@ -5,7 +8,7 @@
     padding: 16px 0px;
 }
 
-.controls_container{
+.controls_container {
     // background-color: red;
 }
 
@@ -26,10 +29,10 @@
 }
 .input {
     // background-color: aquamarine;
-    input[type=number]::-webkit-inner-spin-button, 
-    input[type=number]::-webkit-outer-spin-button { 
-        -webkit-appearance: none; 
-        margin: 0; 
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
     }
 }
 
@@ -41,14 +44,14 @@
     font-weight: 600;
     text-align: center;
     p.amount {
-        color: #4CB065;
+        color: #4cb065;
         margin-bottom: 4px;
     }
     p.description {
         font-size: 1rem;
     }
     .card {
+        // padding: var(--md-spacing); // why you no work?
         padding: 16px;
     }
 }
-
