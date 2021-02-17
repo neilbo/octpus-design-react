@@ -124,7 +124,7 @@ const CloudPricing = () => {
       <Box className={styles.pricing}>
         <Grid container spacing={2} className={styles.high_availbility_container}>
           <Grid item>
-            <HighAvailabilityInfo targets={valueTargets}/>
+            <HighAvailabilityInfo targets={valueTargets} />
           </Grid>
         </Grid>
         <div></div>
@@ -211,7 +211,9 @@ const CloudPricing = () => {
             {/* Total */}
             <Card className={styles.card}>
               <p className={styles.amount}>
-                {formatCcy(totalPrice)}
+                {totalPrice === 0
+                  ? `Free`
+                  : formatCcy(totalPrice)}
                 <sup>*</sup>
               </p>
               <p className={styles.description}>Estimated Monthly Cost</p>

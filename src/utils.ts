@@ -1,7 +1,8 @@
 // https://stackoverflow.com/a/31581206
 export const formatCcy = (num: number, fraction: number = 2): string => {
-    return '$' + num.toLocaleString(undefined, {minimumFractionDigits: fraction});
+    return '$' + num.toLocaleString(undefined, { minimumFractionDigits: fraction });
 }
+
 
 export const handleInvalidValue = (sliderVal: number): number => {
     if (isNaN(sliderVal) || sliderVal < 1) {
